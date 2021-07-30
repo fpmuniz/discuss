@@ -1,4 +1,7 @@
 defmodule DiscussWeb.Telemetry do
+  @moduledoc """
+  Telemetry module for statistics gathering on query and request times.
+  """
   use Supervisor
   import Telemetry.Metrics
 

@@ -1,4 +1,7 @@
 defmodule Discuss.Topic do
+  @moduledoc """
+  Topic model for discussions. This is the core of the application.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

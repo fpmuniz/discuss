@@ -17,12 +17,6 @@ defmodule DiscussWeb.Router do
     pipe_through :browser
 
     get "/", TopicController, :index
-    # get "/topics", TopicController, :index
-    # get "/topics/new", TopicController, :new
-    # post "/topics", TopicController, :create
-    # get "/topics/:id/edit", TopicController, :edit
-    # put "/topics/:id", TopicController, :update
-    # delete "/topics/:id", TopicController, :delete
     resources "/topics", TopicController
   end
 
@@ -30,6 +24,13 @@ defmodule DiscussWeb.Router do
   # scope "/api", DiscussWeb do
   #   pipe_through :api
   # end
+
+  scope "/auth", DiscussWeb do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
 
   # Enables LiveDashboard only for development
   #
