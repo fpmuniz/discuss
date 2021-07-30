@@ -13,9 +13,14 @@ defmodule DiscussWeb.AuthController do
   end
 
   def callback(%{assigns: %{ueberauth_failure: _failure}} = conn, _params) do
-    # IO.inspect failure
     conn
     |> put_flash(:error, "Failed to authenticate :(")
+    |> redirect(to: Routes.topic_path(conn, :index))
+  end
+
+  def signout(conn, _params) do
+    conn
+    |> configure_session(drop: true)
     |> redirect(to: Routes.topic_path(conn, :index))
   end
 

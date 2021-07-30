@@ -7,6 +7,7 @@ defmodule DiscussWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug DiscussWeb.Plugs.SetUser
   end
 
   pipeline :api do
@@ -30,6 +31,7 @@ defmodule DiscussWeb.Router do
 
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
+    delete "/signout", AuthController, :signout
   end
 
   # Enables LiveDashboard only for development
